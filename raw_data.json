@@ -1,0 +1,13 @@
+// Raw data from our Pilot
+[
+	{
+		"own_id": "12450",
+		"device_id": "fd7fb493-7a05-4696-8940-c636e6c7e2da",
+		"name": "Ion",
+		"mac_address": "C0:6D:08:F3:B1:02",
+		"timestamp": "1487570423040",
+		"date": "2017-20-02 08:00:23",
+		"double_distance": "0.38648929138798",
+		"near": "1"
+	}, //next data point...
+]

@@ -1,0 +1,241 @@
+
+html{ width: 100%; 	margin: 0;	padding: 0;}
+body {
+	font-size: 110%;
+	font-family: Arial;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.header{
+	background: rgb(211, 233, 246);
+	border-radius: 2px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.canvas{
+	width: 500px;
+}
+
+input[type=checkbox]{
+	margin-top: 7.495px;
+	margin-bottom: 7.495px;
+}
+
+.glyphicon-menu-right{
+    font-size: 40px;
+    cursor: pointer;
+    padding: 2px;
+    color: rgb(69, 130, 216);
+}
+.glyphicon-menu-left{
+    font-size: 40px;
+    cursor: pointer;
+    padding: 2px;
+    color: rgb(69, 130, 216);
+}
+
+.glyphicon-question-sign{
+    font-size: 18px;
+    padding: 2px;
+    color: rgb(69, 130, 216);
+}
+
+input{
+	width: 140px;
+	border-radius: 2px;
+	margin: 3px;
+	height: 25px;
+}
+
+.btn-drop{
+	color: white;
+    background-color: rgb(69, 130, 216);
+    border-color: #ccc;
+}
+.tab-btn{
+	padding-top: 4px;
+	text-align: center;
+	display: inline-block;
+	cursor: pointer;
+	border-radius: 4px; 
+	color: white;
+	background: rgb(69, 130, 216);
+	width: 125px;
+	height: 28px;
+	margin: 5px;
+}
+.tab-btn:hover{
+	background: rgb(142,0,28);
+	color: white;
+	font-weight: bold;
+}
+
+#show-info{
+	background: rgb(92, 184, 92);
+}
+#show-info:hover{
+	background: rgb(127, 207, 23);
+}
+
+.disabledbutton {
+    pointer-events: none;
+    opacity: 0.4;
+} 
+
+#myChart{
+    width: 100% !important;
+    max-width: 300px;
+    height: auto !important;	
+}
+.small-square {
+  width: 70px;
+  padding: 3px;
+  height: 28px;
+  margin: 5px;
+  border: 1px solid rgba(0, 0, 0, .2);
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.really-small-square{
+	display: inline-block;
+	background: red;
+	width:40px;
+	height: 25px;
+	color: white;
+	cursor: default;
+	padding: 3px;
+	margin: 5px;
+	border: 1px solid rgba(0, 0, 0, .2);
+	text-align: center;
+	border-radius: 2px;
+}
+
+input[type='color']{
+	width: 70px;
+	margin: 3px;
+	margin-left: 5px;
+}
+.dropdown{
+	display: inline-block;
+	margin-left: 5px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+#first-dropdown{
+	margin-left: inherit;
+	padding: 0;
+
+    width: 150px;
+}
+.dropdown-submenu {
+    position: relative;
+}
+.dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-left: 1px;
+    margin-top: -1px;
+    padding: 0;
+}
+
+.caret-right {
+    border-bottom: 4px solid transparent;
+    border-top: 4px solid transparent;
+    border-left: 4px solid;
+    display: inline-block;
+    height: 0;
+    vertical-align: right;
+    width: 0;
+    float: right;
+    margin-top: 7px;
+}
+a, ul, li, .dropdown-submenu .dropdown-menu{
+	outline:none !important;
+}
+a{
+	border-radius: 	2px;
+}
+a.active{
+	border: solid 0.1px lightgrey;
+}
+
+.active{
+	background-color: rgba(43, 145, 247, 0.7) !important;
+	color: white !important;
+}
+.active:hover{
+	background-color: rgba(43, 145, 247, 0.7) !important;
+	color: white !important;
+}
+
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 17px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 13px;
+  width: 13px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:not(:checked) + .slider:before {
+  background-color: #1C5BA2;
+}
+input:checked + .slider:before {
+  background-color: #D80000;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #ccc;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(13px);
+  -ms-transform: translateX(13px);
+  transform: translateX(13px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 17px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+label.switch{
+	margin-bottom: 0px;
+}

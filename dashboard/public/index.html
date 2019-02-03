@@ -1,0 +1,114 @@
+<!-- index.html -->
+<!doctype html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<link rel="stylesheet" href="/stylesheets/style.css"/>
+	<link rel="stylesheet" href="/stylesheets/range.css"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<title>Innostava</title>
+</head>
+<body onload="init(); resize(); hr();">
+	<div class="container-fluid" id="container-1">
+		<div class="row header">
+			<div class="dropdown">
+				<div class="tab-btn" type="button" data-toggle="dropdown">Menu
+					<span class="caret"></span>
+				</div>
+				<ul class="dropdown-menu" id="first-dropdown" style="min-width: 130px;">
+					<li><a tabindex="-1" href="#" id="show-beacons" onclick="showBeacons();">Hide Beacons</a></li>
+					<li><a tabindex="-1" href="#" id="show-seats" onclick="showSeats();">Hide Seats</a></li>
+					<li class="dropdown-submenu">
+						<a id="menu_speed" tabindex="-1" href="#">Play Speed<span class="caret-right"></span></a>
+						<ul class="dropdown-menu" id="ul_speed">
+							<li><a tabindex="-1" href="#" id="75">Fast (75ms)</a></li>
+							<li><a tabindex="-1" href="#" id="125">Normal (125ms)</a></li>
+							<li><a tabindex="-1" href="#" id="175">Slow (175ms)</a></li>
+						</ul>
+					</li>
+					<li class="dropdown-submenu">
+						<a id="menu_interval" tabindex="-1" href="#">Interval<span class="caret-right"></span></a>
+						<ul class="dropdown-menu" id="ul_interval">
+							<li><a tabindex="-1" href="#" id="30sec">30 sec</a></li>
+							<li><a tabindex="-1" href="#" id="05min">5 min</a></li>
+							<li><a tabindex="-1" href="#" id="day">Full Day</a></li>
+						</ul>
+					</li> 
+				</ul>
+			</div>
+			<input style="margin: 5px;" type="date" id="date" name="date" value="2017-01-13" min="2017-01-12" max="2017-03-31">
+			<div class="tab-btn" id="submit" onclick="submitDate()" style="width: 200px;">Submit Date & Interval</div>
+
+			<div class="tab-btn btn-success" id="show-info" onclick="showInfo()">Hide Info</div>
+			<div class="tab-btn btn-warning" id="show-esm" onclick="showESM()">Hide ESM</div>
+			<div class="tab-btn btn-danger" id="show-users" onclick="showUsers()">Hide Users</div>
+		</div>
+		<div class="row" style="margin-left: 3px; margin-top: 18px; ">
+			<div class="col-md-6 canvas exl-option" style="width: 500px;">
+				<div class="row canvas">
+					<canvas id="officeCanvas" width=500 height=600></canvas>
+				</div>
+				<div class="row canvas">
+					<input type="range" id="range" min='0' max ='0' step='1' onchange="drawRange()">
+				</div>
+				<div class="row canvas" style="margin-top: 7px;">
+					<div class="col-md-4">
+						<div id="label_range" style="font-size: 130%; text-align: center;"></div>
+					</div>
+					<div class="col-md-4">
+						<div id="play" class="tab-btn" onclick="play_btn();" style="height: 35px; font-size: 130%; display: block; margin-left: auto; margin-right: auto;">Play</div>
+					</div>
+					<div class="col-md-4" style="text-align: center;">
+						<span class="glyphicon glyphicon-menu-left" aria-hidden="true" onclick="arrowDown();"></span>
+						<span class="glyphicon glyphicon-menu-right" aria-hidden="true" onclick="arrowUp();"></span>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-6 header" id="right-container" style="margin-left: 10px;">
+				
+				<div id="info-display" class="col-md-12">
+					<h4><b>Info on how to use the dashboard:</b></h4>
+					<p>- The points transparency is the ratio of the time spent on each beacon (only in Pause mode).</p>
+					<p>- You have multiple options in the menu: <br>
+						&emsp;- <b>Beacons</b>. Whether or not the beacons are placed on the map.<br>
+						&emsp;- <b>Seats</b>. Whether or not the users seats are placed on the map.<br>
+						&emsp;- <b>Speed</b>. Change the speed when "Play" is pressed.<br>
+						&emsp;- <b>Interval</b>. The interval is how much the day is divided (from every 30sec to a full day).
+					</p>
+					<p>- After you <b>choose</b> your <b>day</b> and <b>interval</b> length, you can <b>press "Submit Date & Interval"</b>. 
+						<br>All the other options are changed whithout the need to submit.</p>
+					<p>- <b>The smoothest animation is 30sec Interval with a Normal playing speed (30sec every 125ms).</b></p>
+					<p>- <b>Keybord Shortcuts</b>. You can press play/pause with the space bar and navigate through the day with the arrow keys</p>
+					<p>- If you have any questions/suggestions/bugged functions on how the website works, please send me an email!</p>
+				</div>
+				<div id="esm-display" class="col-md-12">
+					<hr id="esm-hr">
+					<div id="esm-title" class="col-md-12">
+						<h4><b>ESM Question</b> asked today: &nbsp; Finnish 
+							<label class="switch">
+								<input type="checkbox" id="language">
+								<span class="slider round" onclick="esmLanguage()"></span>
+							</label> English 
+						</h4>		
+					</div>
+					<div id="esm-content" class="col-md-12"></div>
+				</div>
+				<div id="hr-display" class="col-md-12"><hr></div>
+				<div id="users-display" class="col-md-12"></div>
+			</div>
+		</div>
+	</div>
+
+	<script src="/javascripts/constants.js"></script>
+	<script src="/javascripts/draw_inter.js"></script>
+	<script src="/javascripts/front_end.js"></script>
+	<script src="/javascripts/play.js"></script>
+	<script src="/javascripts/draw.js"></script>
+	<script src="/javascripts/index.js"></script>
+</body>
+</html>
